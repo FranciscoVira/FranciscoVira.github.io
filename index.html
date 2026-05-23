@@ -3,97 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FVR Labs - Laboratorio de la IA</title>
+    <title>FVR Labs - Laboratorio de la IA y Desarrollo</title>
     
-    <!-- Fuentes de Google: Space Grotesk para títulos tech, Inter para cuerpo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* === VARIABLES DE COLOR === */
+        /* === VARIABLES DE COLOR PROFESIONALES === */
         :root {
-            --bg-color: #050505;
-            --text-main: #f0f0f0;
-            --text-muted: #888888;
-            --accent: #deff9a; /* Verde neón FVR */
-            --accent-glow: rgba(222, 255, 154, 0.2);
-            --surface: rgba(255, 255, 255, 0.03);
-            --surface-border: rgba(255, 255, 255, 0.08);
+            --bg-base: #020617;
+            --bg-slate: #0f172a;
+            --bg-surface: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #deff9a;
+            --accent-glow: rgba(222, 255, 154, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* === RESET === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-slate);
+            background-image: 
+                linear-gradient(var(--bg-base) 1px, transparent 1px),
+                linear-gradient(90deg, var(--bg-base) 1px, transparent 1px);
+            background-size: 40px 40px;
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* === EFECTO DE LUZ INTERACTIVA DEL CURSOR === */
         #cursor-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            top: 0; left: 0;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            pointer-events: none; /* Para que no interfiera con los clics */
+            pointer-events: none;
             z-index: 0;
             transition: width 0.3s, height 0.3s;
         }
 
-        /* Contenedor principal relativo para superponer sobre el brillo */
-        .wrapper {
-            position: relative;
-            z-index: 1;
-        }
+        .wrapper { position: relative; z-index: 1; }
 
         /* === NAVEGACIÓN === */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; width: 100%;
             padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 100;
-            border-bottom: 1px solid var(--surface-border);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo-img-container { height: 45px; display: flex; align-items: center; justify-content: center; }
+        .logo-img-container img { height: 100%; width: auto; object-fit: contain; }
+
+        .btn-contact {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-contact:hover {
+            border-color: var(--accent);
+            color: var(--bg-base);
+            background-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .logo-img-container {
-            height: 45px; /* Altura ajustada para tu logo rectangular */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-img-container img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* === SECCIÓN HERO (PORTADA) === */
+        /* === PORTADA === */
         .hero {
             height: 100vh;
             display: flex;
@@ -103,6 +98,7 @@
             text-align: center;
             padding: 0 20px;
             position: relative;
+            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.5) 0%, transparent 70%);
         }
 
         .tagline {
@@ -111,31 +107,19 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        .tagline::before, .tagline::after { content: ''; display: block; width: 30px; height: 1px; background-color: var(--accent); }
 
-        h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(40px, 8vw, 90px);
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-        }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 8vw, 85px); line-height: 1.1; font-weight: 700; margin-bottom: 30px; letter-spacing: -2px; }
+        .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--text-muted); max-width: 650px; font-weight: 400; }
 
-        .hero p {
-            font-size: clamp(16px, 2vw, 22px);
-            color: var(--text-muted);
-            max-width: 600px;
-            font-weight: 300;
-        }
-
-        /* Flecha animada de bajar */
         .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
+            position: absolute; bottom: 40px; left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
             color: var(--text-muted);
@@ -148,261 +132,277 @@
             60% { transform: translateY(-10px) translateX(-50%); }
         }
 
-        /* === CLASES DE ANIMACIÓN AL SCROLLEAR (REVEAL) === */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Retrasos para cascada */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.3s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
-        /* === SECCIONES COMUNES === */
-        section {
-            padding: 120px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; margin-bottom: 15px; }
+        .section-title span { color: var(--accent); }
+        .section-subtitle { color: var(--text-muted); font-size: 18px; max-width: 600px; margin: 0 auto; }
 
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 40px;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        .section-title span {
-            color: var(--accent);
-        }
-
-        /* === GRILLA DE SERVICIOS (GLASSMORPHISM) === */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
+        /* === GRILLAS === */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .card {
-            background: var(--surface);
-            border: 1px solid var(--surface-border);
-            border-radius: 20px;
-            padding: 50px 40px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Brillo interior en la tarjeta al hacer hover */
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(222,255,154,0.1) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
+            content: ''; position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(222, 255, 154, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
+        .card:hover { transform: translateY(-8px); border-color: rgba(222, 255, 154, 0.3); background: rgba(30, 41, 59, 0.7); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card:hover::before { transform: scaleX(1); }
 
-        .card:hover::before {
-            opacity: 1;
-        }
+        .card-icon { font-size: 36px; color: var(--accent); margin-bottom: 25px; display: inline-block; transition: transform 0.3s ease; }
+        .card:hover .card-icon { transform: scale(1.1) rotate(-5deg); }
+        .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-bottom: 15px; font-weight: 600; }
+        .card p { color: var(--text-muted); font-size: 16px; line-height: 1.7; flex-grow: 1; }
 
-        .card-content {
-            position: relative;
-            z-index: 1;
+        /* === PROYECTOS DESTACADOS === */
+        .project-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.4s ease;
         }
-
-        .card-icon {
-            font-size: 40px;
-            margin-bottom: 25px;
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(222, 255, 154, 0.05);
+        }
+        .project-status {
             display: inline-block;
+            padding: 6px 12px;
+            background: rgba(222, 255, 154, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            align-self: flex-start;
         }
+        .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--text-main); }
+        .project-desc { color: var(--text-muted); font-size: 16px; line-height: 1.6; }
+        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+        .tag { background: rgba(255,255,255,0.05); color: var(--text-muted); padding: 5px 12px; border-radius: 6px; font-size: 13px; border: 1px solid rgba(255,255,255,0.1); }
 
-        .card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
+        /* === STACK TECNOLÓGICO CATEGORIZADO === */
+        .tech-stack-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 80px; }
+        .tech-category { background: rgba(30, 41, 59, 0.3); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; transition: all 0.3s ease; }
+        .tech-category:hover { transform: translateY(-5px); border-color: rgba(222, 255, 154, 0.3); background: rgba(30, 41, 59, 0.5); }
+        .tech-category h4 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed var(--border-color); display: flex; align-items: center; gap: 12px; }
+        .tech-category h4 i { color: var(--accent); font-size: 24px; }
+        .tech-category ul { list-style: none; }
+        .tech-category li { color: var(--text-muted); margin-bottom: 15px; display: flex; align-items: center; gap: 15px; font-size: 16px; transition: color 0.3s ease; }
+        .tech-category li:hover { color: var(--text-main); }
+        .tech-category li i { font-size: 20px; width: 24px; text-align: center; color: var(--accent); opacity: 0.6; transition: all 0.3s ease; }
+        .tech-category li:hover i { opacity: 1; transform: scale(1.1); }
 
-        .card p {
-            color: var(--text-muted);
-            font-size: 17px;
-        }
-
-        /* === BANNER CTA (CALL TO ACTION) === */
+        /* === BANNER CTA === */
         .cta-banner {
-            background: linear-gradient(90deg, #0a0a0a, #111a00);
-            border: 1px solid var(--surface-border);
+            background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-slate) 100%);
+            border: 1px solid rgba(222, 255, 154, 0.2);
             border-radius: 24px;
             padding: 80px 40px;
             text-align: center;
             margin-top: 60px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .cta-banner h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        /* === FOOTER === */
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid var(--surface-border);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* === RESPONSIVE === */
+        .cta-banner h2 { font-family: 'Space Grotesk', sans-serif; font-size: 36px; margin-bottom: 20px; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 14px; background-color: var(--bg-base); }
+        
         @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .card {
-                padding: 40px 30px;
-            }
+            .grid-container { grid-template-columns: 1fr; }
+            nav { padding: 15px 5%; }
+            .btn-contact { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- El brillo que sigue al ratón -->
     <div id="cursor-glow"></div>
 
     <div class="wrapper">
-        <!-- BARRA DE NAVEGACIÓN -->
         <nav>
             <a href="#" class="logo">
                 <div class="logo-img-container">
-                    <!-- REEMPLAZA ESTO POR LA URL DE TU LOGO (ej. <img src="logo.png" alt="FVR LABS">) -->
-                    <!-- Por ahora dejo el texto con tu estilo hasta que subas la imagen -->
-                    <span style="color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -1px;">FVR <span style="color: var(--accent);">LABS</span></span>
+                    <img src="logo_fvrlabs.png" alt="FVR LABS Logo">
                 </div>
             </a>
+            <a href="mailto:contacto@fvrlabs.cl" class="btn-contact">Hablemos del Proyecto</a>
         </nav>
 
-        <!-- SECCIÓN PRINCIPAL -->
         <header class="hero">
-            <div class="tagline reveal">Ingeniería & Arte</div>
+            <div class="tagline reveal">Ingeniería, Datos & IA</div>
             <h1 class="reveal delay-1">Laboratorio de la <span style="color: var(--accent)">IA</span></h1>
             <p class="reveal delay-2">
-                Donde la arquitectura de software robusta se encuentra con la creatividad sonora. 
-                Construimos soluciones reales en la nube y ritmos que desafían lo convencional.
+                Arquitectura de software y modelos predictivos de nivel corporativo. Transformamos datos en decisiones, automatizamos operaciones complejas y exploramos las fronteras de la IA creativa.
             </p>
-            <div class="scroll-indicator reveal delay-2">↓</div>
+            <div class="scroll-indicator reveal delay-3"><i class="fa-solid fa-chevron-down"></i></div>
         </header>
 
-        <!-- SECCIÓN DE ÁREAS DE EXPERTISE -->
         <main>
             <section id="expertise">
-                <h2 class="section-title reveal">Nuestras <span>Divisiones</span></h2>
+                <div class="section-header reveal">
+                    <h2 class="section-title">Nuestras <span>Soluciones</span></h2>
+                    <p class="section-subtitle">Construimos productos digitales escalables desde la infraestructura en la nube hasta el dispositivo del usuario.</p>
+                </div>
                 
                 <div class="grid-container">
-                    
-                    <!-- TARJETA SOFTWARE -->
                     <article class="card reveal delay-1">
-                        <div class="card-content">
-                            <span class="card-icon">⚙️</span>
-                            <h3>SaaS & Arquitectura Cloud</h3>
-                            <p>
-                                Diseño de infraestructuras Multi-Tenant en <strong>Google Cloud Platform</strong> y desarrollo nativo en <strong>Flutter</strong>. 
-                                <br><br>
-                                <em>Proyecto en Desarrollo:</em> Plataforma integral inteligente para la administración y transparencia de gastos comunes.
-                            </p>
-                        </div>
+                        <i class="fa-solid fa-database card-icon"></i>
+                        <h3>Ingeniería de Datos</h3>
+                        <p>Diseñamos arquitecturas SQL eficientes, procesos de extracción (ETL) y modelamiento en <strong>Cubos OLAP</strong> para consolidar la información estratégica de su negocio.</p>
                     </article>
 
-                    <!-- TARJETA MÚSICA -->
                     <article class="card reveal delay-2">
-                        <div class="card-content">
-                            <span class="card-icon">🎧</span>
-                            <h3>Estudio de Ritmos IA</h3>
-                            <p>
-                                Producción musical impulsada por Inteligencia Artificial y Prompt Engineering de alto nivel. 
-                                <br><br>
-                                Especialistas en <strong>Reggaetón Old School</strong>, <strong>Cumbia Pop</strong> y <strong>Cumbia Ranchera</strong>, creando sonidos que conectan con la cultura local.
-                            </p>
-                        </div>
+                        <i class="fa-solid fa-brain card-icon"></i>
+                        <h3>IA Predictiva</h3>
+                        <p>Entrenamos e implementamos <strong>modelos neuronales</strong> adaptados a su empresa. Desde predicción de demanda, hasta automatización cognitiva de decisiones empresariales.</p>
                     </article>
 
+                    <article class="card reveal delay-3">
+                        <i class="fa-solid fa-server card-icon"></i>
+                        <h3>SaaS & Desarrollo</h3>
+                        <p>Digitalizamos flujos de trabajo. Desarrollamos backends robustos en <strong>GCP</strong> y aplicaciones móviles con <strong>Flutter</strong> diseñadas para alta concurrencia.</p>
+                    </article>
                 </div>
             </section>
 
-            <!-- SECCIÓN CTA -->
-            <section>
-                <div class="cta-banner reveal">
-                    <h2>Preparando el <span>Futuro</span></h2>
-                    <p style="color: var(--text-muted); font-size: 18px;">
-                        Estamos codificando el backend y afinando las pistas. Pronto revelaremos nuestras primeras herramientas.
-                    </p>
+            <section id="proyectos" style="background-color: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Casos de <span>Estudio</span></h2>
+                    <p class="section-subtitle">Soluciones reales implementadas en entornos de alta exigencia.</p>
+                </div>
+
+                <div class="grid-container">
+                    <div class="project-card reveal delay-1">
+                        <span class="project-status">En Desarrollo</span>
+                        <h3 class="project-title">SaaS Gestión de Condominios</h3>
+                        <p class="project-desc">Plataforma integral inteligente para la administración, transparencia financiera y comunicación en comunidades residenciales. Arquitectura multi-tenant escalable.</p>
+                        <div class="project-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Google Cloud</span>
+                            <span class="tag">Cloud SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal delay-2">
+                        <span class="project-status">Implementado</span>
+                        <h3 class="project-title">IA Quiebres de Stock Retail</h3>
+                        <p class="project-desc">Desarrollo de un modelo de red neuronal diseñado para detectar y predecir causas de quiebres de inventario en salas de supermercados, alcanzando un <strong>98% de precisión</strong> operativa.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Data Warehouse</span>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <section id="stack">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Ecosistema <span>Técnico</span></h2>
+                </div>
+                <div class="tech-stack-container reveal delay-1">
+                    <div class="tech-category">
+                        <h4><i class="fa-solid fa-chart-pie"></i> Data & Analytics</h4>
+                        <ul>
+                            <li><i class="fa-brands fa-microsoft"></i> MS SQL Server</li>
+                            <li><i class="fa-solid fa-cubes"></i> Cubos OLAP / SSAS</li>
+                            <li><i class="fa-solid fa-project-diagram"></i> ETL / SSIS</li>
+                            <li><i class="fa-solid fa-chart-column"></i> Reporting / SSRS</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4><i class="fa-solid fa-network-wired"></i> IA & Modelos</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-brain"></i> Redes Neuronales</li>
+                            <li><i class="fa-solid fa-robot"></i> Machine Learning</li>
+                            <li><i class="fa-solid fa-language"></i> NLP & LLMs</li>
+                            <li><i class="fa-solid fa-chart-line"></i> Análisis Predictivo</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4><i class="fa-solid fa-code"></i> Software & Dev</h4>
+                        <ul>
+                            <li><i class="fa-brands fa-python"></i> Python</li>
+                            <li><i class="fa-brands fa-php"></i> PHP</li>
+                            <li><i class="fa-solid fa-layer-group"></i> Flutter (Mobile & Web)</li>
+                            <li><i class="fa-brands fa-github"></i> CI/CD & Git</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-category">
+                        <h4><i class="fa-solid fa-cloud"></i> Cloud Platform</h4>
+                        <ul>
+                            <li><i class="fa-brands fa-google"></i> Google Cloud (GCP)</li>
+                            <li><i class="fa-solid fa-database"></i> Cloud SQL</li>
+                            <li><i class="fa-solid fa-server"></i> Cloud Run</li>
+                            <li><i class="fa-solid fa-fire"></i> Firebase Auth</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
         </main>
 
-        <!-- FOOTER -->
         <footer>
             <p>&copy; 2026 FVR Labs. Santiago, Chile. Todos los derechos reservados.</p>
         </footer>
     </div>
 
-    <!-- SCRIPT DE INTERACTIVIDAD -->
     <script>
-        // 1. LÓGICA DEL BRILLO DEL CURSOR
         const glow = document.getElementById('cursor-glow');
-        
-        // Actualiza la posición del brillo según el ratón
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // 2. LÓGICA DE ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
-        // Selecciona todos los elementos con la clase .reveal
         const reveals = document.querySelectorAll('.reveal');
-
-        const revealOptions = {
-            threshold: 0.15, // Se activa cuando el 15% del elemento es visible
-            rootMargin: "0px 0px -50px 0px" // Activa un poco antes de llegar al fondo
-        };
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
         const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    // Agrega la clase 'active' para disparar la animación CSS
+                if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    // Deja de observar una vez que ya apareció
                     observer.unobserve(entry.target);
                 }
             });
         }, revealOptions);
 
-        // Aplica el observador a cada elemento
-        reveals.forEach(reveal => {
-            revealOnScroll.observe(reveal);
-        });
+        reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
-        // Activa manualmente la primera pantalla (Hero) al cargar la página
         window.onload = () => {
             setTimeout(() => {
-                const heroElements = document.querySelectorAll('.hero .reveal');
-                heroElements.forEach(el => el.classList.add('active'));
-            }, 100); // Pequeño retraso para que la carga sea fluida
+                document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
+            }, 100);
         };
     </script>
 </body>
