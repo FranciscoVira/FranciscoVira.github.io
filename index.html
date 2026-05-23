@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <!-- Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             /* Futuristic Palette */
@@ -17,15 +20,21 @@
             --bg-slate: #0b1120;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent: #00f0ff; /* Electric Cyan */
-            --accent-secondary: #8b5cf6; /* Cyber Purple */
+            --accent: #00f0ff;
+            /* Electric Cyan */
+            --accent-secondary: #8b5cf6;
+            /* Cyber Purple */
             --accent-glow: rgba(0, 240, 255, 0.2);
             --border-color: rgba(255, 255, 255, 0.05);
             --glass-bg: rgba(11, 17, 32, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -36,16 +45,31 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-base); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-secondary); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
 
         /* Animated Futuristic Background */
         .bg-grid {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -57,8 +81,13 @@
         }
 
         @keyframes pan-grid {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(50px);
+            }
         }
 
         /* Ambient Glow Orbs */
@@ -70,18 +99,40 @@
             pointer-events: none;
             opacity: 0.4;
         }
-        .orb-1 { width: 400px; height: 400px; background: var(--accent-secondary); top: -100px; left: -100px; animation: float 10s ease-in-out infinite alternate; }
-        .orb-2 { width: 500px; height: 500px; background: var(--accent); bottom: -200px; right: -100px; animation: float 12s ease-in-out infinite alternate-reverse; }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-secondary);
+            top: -100px;
+            left: -100px;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            bottom: -200px;
+            right: -100px;
+            animation: float 12s ease-in-out infinite alternate-reverse;
+        }
 
         @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
         }
 
         /* Cursor Glow */
         #cursor-glow {
             position: fixed;
-            width: 400px; height: 400px;
+            width: 400px;
+            height: 400px;
             background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
             border-radius: 50%;
             transform: translate(-50%, -50%);
@@ -91,34 +142,63 @@
             transition: width 0.3s, height 0.3s;
         }
 
-        .wrapper { position: relative; z-index: 1; }
+        .wrapper {
+            position: relative;
+            z-index: 1;
+        }
 
         /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
-            display: flex; justify-content: space-between; align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: rgba(3, 7, 18, 0.7);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            z-index: 100; border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .logo-img-container { height: 45px; display: flex; align-items: center; }
-        .logo-img-container img { height: 100%; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
+        .logo-img-container {
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img-container img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
 
         .btn-contact {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 10px 24px; border-radius: 8px;
-            font-family: 'Space Grotesk', sans-serif; font-weight: 600;
-            text-decoration: none; transition: all 0.3s ease;
-            position: relative; overflow: hidden;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .btn-contact::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
 
@@ -127,241 +207,1082 @@
             box-shadow: 0 0 20px var(--accent-glow);
             color: var(--accent);
         }
-        .btn-contact:hover::before { left: 100%; }
+
+        .btn-contact:hover::before {
+            left: 100%;
+        }
 
         /* Hero */
         .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0 20px; position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
         }
 
         .tagline {
             color: var(--accent);
-            font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;
-            letter-spacing: 4px; font-size: 14px; margin-bottom: 24px; font-weight: 600;
-            display: flex; align-items: center; gap: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .tagline::before, .tagline::after {
-            content: ''; display: block; width: 40px; height: 1px;
+
+        .tagline::before,
+        .tagline::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(40px, 8vw, 85px); line-height: 1.1; font-weight: 700;
-            margin-bottom: 30px; letter-spacing: -2px;
+            font-size: clamp(40px, 8vw, 85px);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
             text-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
         }
+
         h1 span {
             background: linear-gradient(to right, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(16px, 2vw, 20px); color: var(--text-muted);
-            max-width: 700px; font-weight: 300; margin-bottom: 40px;
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            max-width: 700px;
+            font-weight: 300;
+            margin-bottom: 40px;
         }
 
         .scroll-indicator {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            animation: bounce 2s infinite; color: var(--accent); font-size: 24px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--accent);
+            font-size: 24px;
             opacity: 0.7;
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
         }
 
         /* Animations */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
 
         /* Sections */
-        section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 48px; margin-bottom: 15px; }
-        .section-title span { 
-            background: linear-gradient(to right, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        section {
+            padding: 120px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        .section-subtitle { color: var(--text-muted); font-size: 18px; max-width: 600px; margin: 0 auto; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
         /* Grids and Cards */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
 
         .card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 40px 30px;
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
-            display: flex; flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-            transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: rgba(0, 240, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
         }
 
-        .card:hover::before { transform: scaleX(1); }
+        .card:hover::before {
+            transform: scaleX(1);
+        }
 
         .card-icon {
             font-size: 42px;
             background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 25px; display: inline-block;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            display: inline-block;
             filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
         }
 
-        .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-bottom: 15px; font-weight: 600; color: #fff; }
-        .card p { color: var(--text-muted); font-size: 16px; line-height: 1.7; flex-grow: 1; }
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
 
         /* Project Cards */
         .project-card {
             background: linear-gradient(145deg, rgba(11, 17, 32, 0.8) 0%, rgba(3, 7, 18, 0.9) 100%);
-            border: 1px solid var(--border-color); border-radius: 24px; padding: 50px;
-            display: flex; flex-direction: column; gap: 20px; transition: all 0.4s ease;
-            position: relative; overflow: hidden;
-        }
-        
-        .project-card::after {
-            content: ''; position: absolute; bottom: 0; right: 0;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-            border-radius: 50%; pointer-events: none;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-card:hover { border-color: var(--accent); box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1); transform: scale(1.02); }
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
+            transform: scale(1.02);
+        }
 
         .project-status {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 14px; background: rgba(0, 240, 255, 0.1);
-            color: var(--accent); border-radius: 20px;
-            font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-            align-self: flex-start; border: 1px solid rgba(0, 240, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            border: 1px solid rgba(0, 240, 255, 0.2);
         }
-        
+
         .project-status::before {
-            content: ''; width: 6px; height: 6px; border-radius: 50%;
-            background-color: var(--accent); box-shadow: 0 0 8px var(--accent);
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
             animation: pulse-dot 2s infinite;
         }
-        
-        @keyframes pulse-dot { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
-        .project-title { font-family: 'Space Grotesk', sans-serif; font-size: 32px; color: var(--text-main); }
-        .project-desc { color: var(--text-muted); font-size: 17px; line-height: 1.6; }
-        
-        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
-        .tag {
-            background: rgba(255, 255, 255, 0.03); color: #cbd5e1;
-            padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease;
+        @keyframes pulse-dot {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
         }
-        .project-card:hover .tag { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); }
+
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.03);
+            color: #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tag {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
 
         /* Tech Stack */
-        .tech-stack-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .tech-stack-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
         .tech-category {
-            background: var(--glass-bg); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 35px; transition: all 0.3s ease;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
-        .tech-category:hover { transform: translateY(-5px); border-color: rgba(139, 92, 246, 0.4); background: rgba(17, 24, 39, 0.8); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1); }
+
+        .tech-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(17, 24, 39, 0.8);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+        }
+
         .tech-category h4 {
-            font-family: 'Space Grotesk', sans-serif; font-size: 22px; margin-bottom: 25px; padding-bottom: 15px;
-            border-bottom: 1px dashed rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .tech-category h4 i { color: var(--accent-secondary); font-size: 24px; }
-        .tech-category ul { list-style: none; }
-        .tech-category li { color: var(--text-muted); margin-bottom: 16px; display: flex; align-items: center; gap: 15px; font-size: 16px; transition: color 0.3s ease; }
-        .tech-category li:hover { color: var(--text-main); }
+
+        .tech-category h4 i {
+            color: var(--accent-secondary);
+            font-size: 24px;
+        }
+
+        .tech-category ul {
+            list-style: none;
+        }
+
+        .tech-category li {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .tech-category li:hover {
+            color: var(--text-main);
+        }
+
         .tech-category li i {
-            font-size: 20px; width: 24px; text-align: center; color: var(--accent);
-            opacity: 0.7; transition: all 0.3s ease;
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+            color: var(--accent);
+            opacity: 0.7;
+            transition: all 0.3s ease;
         }
-        .tech-category li:hover i { opacity: 1; transform: scale(1.2) rotate(5deg); text-shadow: 0 0 10px var(--accent-glow); }
+
+        .tech-category li:hover i {
+            opacity: 1;
+            transform: scale(1.2) rotate(5deg);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
 
         /* Contact Section (Futuristic CTA) */
         .cta-banner {
             background: linear-gradient(135deg, rgba(11, 17, 32, 0.9) 0%, rgba(3, 7, 18, 1) 100%);
-            border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 70px 50px;
-            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 50px;
-            position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            margin: 60px 5% 100px; max-width: 1400px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 24px;
+            padding: 70px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            margin: 60px 5% 100px;
+            max-width: 1400px;
         }
-        .cta-banner::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
-            pointer-events: none; animation: spin-glow 15s linear infinite;
-        }
-        @keyframes spin-glow { 100% { transform: rotate(360deg); } }
 
-        .cta-content { flex: 1 1 400px; position: relative; z-index: 1; }
-        .cta-content h2 { font-family: 'Space Grotesk', sans-serif; font-size: 42px; margin-bottom: 20px; }
-        .cta-content p { color: var(--text-muted); font-size: 18px; margin-bottom: 35px; line-height: 1.7; max-width: 550px; }
-        
-        .contact-card {
-            flex: 1 1 350px; background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); position: relative; z-index: 1;
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.01);
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+            animation: spin-glow 15s linear infinite;
         }
-        .contact-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        
-        .contact-list li { margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+
+        @keyframes spin-glow {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta-content {
+            flex: 1 1 400px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+        .contact-card {
+            flex: 1 1 350px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 1;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+        }
+
+        .contact-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .contact-list li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .contact-icon {
-            background: rgba(0, 240, 255, 0.1); width: 45px; height: 45px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(0, 240, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 240, 255, 0.2);
             transition: all 0.3s ease;
         }
-        .contact-list li:hover .contact-icon { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-        .contact-list li:hover .contact-icon i { color: var(--bg-base); }
-        .contact-list i { color: var(--accent); font-size: 18px; transition: color 0.3s ease; }
-        .contact-list a { color: var(--text-main); text-decoration: none; font-size: 16px; font-weight: 500; transition: all 0.3s ease; }
-        .contact-list a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); letter-spacing: 0.5px; }
+
+        .contact-list li:hover .contact-icon {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .contact-list li:hover .contact-icon i {
+            color: var(--bg-base);
+        }
+
+        .contact-list i {
+            color: var(--accent);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-list a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-list a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent-glow);
+            letter-spacing: 0.5px;
+        }
 
         .btn-primary {
-            display: inline-flex; align-items: center; padding: 14px 28px;
-            background: var(--accent); color: var(--bg-base); font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700; border-radius: 8px; text-decoration: none; border: none;
-            transition: all 0.3s ease; box-shadow: 0 0 20px var(--accent-glow);
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            background: var(--accent);
+            color: var(--bg-base);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4); }
-        
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
+        }
+
         .btn-secondary {
-            display: inline-flex; align-items: center; padding: 14px 28px;
-            background: rgba(255,255,255,0.05); color: var(--text-main); font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600; border-radius: 8px; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
 
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 14px; background-color: var(--bg-base); position: relative; z-index: 1; }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+            background-color: var(--bg-base);
+            position: relative;
+            z-index: 1;
+        }
 
         @media (max-width: 768px) {
-            .grid-container, .tech-stack-container { grid-template-columns: 1fr; }
-            h1 { font-size: 40px; }
-            .cta-banner { padding: 40px 30px; }
-            .btn-contact { display: none; }
+
+            .grid-container,
+            .tech-stack-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .cta-banner {
+                padding: 40px 30px;
+            }
+
+            .btn-contact {
+                display: none;
+            }
         }
+
+        /* --- NUEVAS ANIMACIONES CSS PURAS --- */
+
+        /* 1. Cubo OLAP 3D Rotatorio */
+        .cube-container {
+            perspective: 1000px;
+            width: 140px;
+            height: 140px;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotateCube 15s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: rgba(11, 17, 32, 0.85);
+            border: 2px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.2);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cube-face:hover {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .cube-face i {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .cube-face span {
+            font-size: 20px;
+            color: var(--text-main);
+            margin-top: 5px;
+        }
+
+        .face-front {
+            transform: rotateY(0deg) translateZ(70px);
+        }
+
+        .face-back {
+            transform: rotateY(180deg) translateZ(70px);
+            border-color: var(--accent-secondary);
+            color: var(--accent-secondary);
+            box-shadow: inset 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .face-right {
+            transform: rotateY(90deg) translateZ(70px);
+        }
+
+        .face-left {
+            transform: rotateY(-90deg) translateZ(70px);
+            border-color: var(--accent-secondary);
+            color: var(--accent-secondary);
+            box-shadow: inset 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .face-top {
+            transform: rotateX(90deg) translateZ(70px);
+        }
+
+        .face-bottom {
+            transform: rotateX(-90deg) translateZ(70px);
+            background: var(--accent);
+            color: var(--bg-base);
+        }
+
+        .face-bottom i {
+            color: var(--bg-base);
+        }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(-20deg) rotateY(0deg) translateY(0); }
+            25% { transform: rotateX(-40deg) rotateY(90deg) translateY(15px); }
+            50% { transform: rotateX(-20deg) rotateY(180deg) translateY(0); }
+            75% { transform: rotateX(10deg) rotateY(270deg) translateY(15px); }
+            100% { transform: rotateX(-20deg) rotateY(360deg) translateY(0); }
+        }
+
+        .cube-stats {
+            position: absolute; font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px; font-weight: bold; color: var(--accent);
+            background: rgba(11, 17, 32, 0.9); border: 1px solid var(--accent);
+            padding: 4px 10px; border-radius: 6px; z-index: 5;
+            pointer-events: none; opacity: 0; animation: popStat 8s infinite;
+            box-shadow: 0 0 15px rgba(0,240,255,0.2);
+        }
+        .stat-1 { top: -30px; left: -50px; animation-delay: 0s; }
+        .stat-2 { bottom: -30px; right: -50px; color: var(--accent-secondary); border-color: var(--accent-secondary); box-shadow: 0 0 15px rgba(139,92,246,0.2); animation-delay: 2.5s; }
+        .stat-3 { top: 50px; right: -60px; color: #f43f5e; border-color: #f43f5e; box-shadow: 0 0 15px rgba(244,63,94,0.2); animation-delay: 5s; }
+
+        @keyframes popStat {
+            0% { transform: scale(0.5) translateY(10px); opacity: 0; }
+            10%, 40% { transform: scale(1) translateY(0); opacity: 1; }
+            50%, 100% { transform: scale(0.5) translateY(-10px); opacity: 0; }
+        }
+
+        /* 2. Gráfico de Barras Animado (Business Intelligence) */
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 70px;
+            margin-top: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+            width: 100%;
+        }
+
+        .bar {
+            width: 18%;
+            border-radius: 4px 4px 0 0;
+            transform-origin: bottom;
+            background: linear-gradient(to top, var(--accent-secondary), var(--accent));
+            animation: growBar 2s infinite alternate ease-in-out;
+        }
+
+        .bar-1 {
+            height: 40%;
+            animation-delay: 0s;
+        }
+
+        .bar-2 {
+            height: 80%;
+            animation-delay: 0.3s;
+        }
+
+        .bar-3 {
+            height: 50%;
+            animation-delay: 0.6s;
+        }
+
+        .bar-4 {
+            height: 100%;
+            animation-delay: 0.9s;
+        }
+
+        .bar-5 {
+            height: 65%;
+            animation-delay: 1.2s;
+        }
+
+        @keyframes growBar {
+            0% {
+                transform: scaleY(0.4);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+                box-shadow: 0 -5px 15px var(--accent-glow);
+            }
+        }
+
+        /* 3. Red Neuronal para Quiebres de Stock */
+        .nn-container {
+            position: relative;
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding: 0 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .nn-layer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .nn-node {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-slate);
+            border: 2px solid var(--text-muted);
+            position: relative;
+        }
+
+        .nn-node.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .nn-node::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+            animation: fireNode 4s infinite;
+        }
+
+        .layer-1 .nn-node::after {
+            animation-delay: 0s;
+        }
+
+        .layer-2 .nn-node::after {
+            animation-delay: 0.8s;
+            background: var(--accent-secondary);
+        }
+
+        .layer-3 .nn-node {
+            border-color: var(--accent);
+            width: 28px;
+            height: 28px;
+            animation: pulseDecision 4s infinite;
+        }
+
+        @keyframes fireNode {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        @keyframes pulseDecision {
+
+            0%,
+            45% {
+                border-color: #f43f5e;
+                box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+                background: #f43f5e;
+            }
+
+            50%,
+            100% {
+                border-color: var(--accent);
+                box-shadow: 0 0 20px var(--accent-glow);
+                background: var(--accent);
+            }
+        }
+
+        .nn-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .nn-line {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 1.5;
+            stroke-dasharray: 4;
+            animation: dash 20s linear infinite;
+        }
+
+        .nn-line.active {
+            stroke: var(--accent);
+            opacity: 0.6;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        .stock-status-container {
+            position: relative;
+            height: 40px;
+            margin-top: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .status-alert {
+            color: #f43f5e;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            animation: fadeAlert 4s infinite;
+        }
+
+        .status-ok {
+            color: var(--accent);
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            animation: fadeOk 4s infinite;
+        }
+
+        @keyframes fadeAlert {
+
+            0%,
+            45% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeOk {
+
+            0%,
+            45% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            50%,
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Knowledge Base Animations */
+        /* Logística Animation */
+        .logistics-anim { width: 100%; height: 50px; margin-top: 20px; position: relative; border-bottom: 2px solid rgba(255,255,255,0.05); display: flex; align-items: flex-end; padding-bottom: 5px; overflow: hidden; }
+        .belt-box { width: 28px; height: 28px; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--accent); border-radius: 4px; position: absolute; bottom: 5px; left: -40px; display: flex; justify-content: center; align-items: center; animation: moveBox 5s infinite linear; box-shadow: inset 0 0 10px rgba(0,240,255,0.2); }
+        .belt-box i { font-size: 14px; color: var(--accent); }
+        .box-2 { animation-delay: 2.5s; background: rgba(139, 92, 246, 0.1); border-color: var(--accent-secondary); box-shadow: inset 0 0 10px rgba(139,92,246,0.2); }
+        .box-2 i { color: var(--accent-secondary); }
+        .forecast-line { position: absolute; width: 100%; height: 100%; bottom: 10px; z-index: 0; }
+        .forecast-path { fill: none; stroke: var(--text-muted); stroke-width: 2; stroke-dasharray: 4; animation: streamData 10s linear infinite; opacity: 0.3; }
+        @keyframes moveBox { 0% { transform: translateX(0) rotate(0deg); opacity: 0; } 10%, 90% { opacity: 1; } 100% { transform: translateX(300px) rotate(5deg); opacity: 0; } }
+
+        /* Agile Animation */
+        .agile-anim { width: 100%; height: 50px; margin-top: 20px; position: relative; display: flex; justify-content: center; align-items: center; }
+        .agile-cycle { width: 60px; height: 60px; border: 2px dashed rgba(255,255,255,0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; animation: spinCycle 6s linear infinite; position: absolute; }
+        .agile-bulb { font-size: 24px; color: var(--bg-slate); text-shadow: none; transition: all 0.3s; animation: ideaLight 4s infinite; z-index: 2; }
+        .agile-dot { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; position: absolute; top: -7px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 15px var(--accent); }
+        @keyframes ideaLight { 0%, 40% { color: rgba(255,255,255,0.1); text-shadow: none; } 50%, 90% { color: #facc15; text-shadow: 0 0 20px rgba(250, 204, 21, 0.5); } 100% { color: rgba(255,255,255,0.1); text-shadow: none; } }
+
+        /* Automation Robot */
+        .auto-anim { width: 100%; height: 50px; margin-top: 20px; position: relative; display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .robot-head { width: 45px; height: 40px; background: rgba(255, 255, 255, 0.05); border: 2px solid var(--accent); border-radius: 10px 10px 6px 6px; position: relative; display: flex; justify-content: center; align-items: center; animation: floatRobot 3s infinite ease-in-out; box-shadow: inset 0 0 15px rgba(0,240,255,0.1); }
+        .robot-eye { width: 28px; height: 10px; background: rgba(0,0,0,0.6); border-radius: 5px; position: relative; overflow: hidden; }
+        .robot-eye::after { content: ''; position: absolute; top: 0; left: -10px; width: 12px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: scanEye 2s infinite alternate ease-in-out; }
+        .robot-antenna { position: absolute; top: -12px; width: 2px; height: 12px; background: var(--accent); }
+        .robot-antenna::after { content: ''; position: absolute; top: -4px; left: -3px; width: 8px; height: 8px; background: #f43f5e; border-radius: 50%; animation: blinkAntenna 1s infinite; }
+        .gear-icon { font-size: 24px; color: rgba(255,255,255,0.1); animation: spinCycle 5s linear infinite; }
+        .gear-rev { animation-direction: reverse; color: rgba(139, 92, 246, 0.3); font-size: 20px;}
+        @keyframes scanEye { 0% { left: 0; } 100% { left: 16px; } }
+        @keyframes floatRobot { 0%, 100% { transform: translateY(-4px); } 50% { transform: translateY(4px); } }
+        @keyframes blinkAntenna { 0%, 49% { opacity: 0.2; box-shadow: none; } 50%, 100% { opacity: 1; box-shadow: 0 0 10px #f43f5e; } }
+
+        /* 4. Animación SaaS Condominios (Edificio + App) */
+        .building-container {
+            position: relative; width: 100%; height: 180px;
+            display: flex; justify-content: center; align-items: center;
+            margin-top: 20px; background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px; overflow: hidden;
+        }
+        .building-wrapper { position: relative; z-index: 2; }
+        .building {
+            width: 70px; height: 120px; background: rgba(255, 255, 255, 0.02);
+            border: 2px solid var(--accent); border-radius: 6px 6px 0 0;
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr); gap: 6px; padding: 8px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1); position: relative;
+        }
+        .building::before {
+            content: 'EDIFICIO'; position: absolute; top: -22px; width: 100%;
+            text-align: center; font-size: 10px; color: var(--accent);
+            letter-spacing: 1px; font-family: 'Space Grotesk', sans-serif; font-weight: bold;
+        }
+        .window { background: rgba(255, 255, 255, 0.05); border-radius: 2px; animation: lightWindow 5s infinite; }
+        .w1 { animation-delay: 0s; } .w2 { animation-delay: 1.2s; }
+        .w3 { animation-delay: 2.4s; } .w4 { animation-delay: 0.6s; }
+        .w5 { animation-delay: 1.8s; } .w6 { animation-delay: 3.2s; }
+        .w7 { background: rgba(244, 63, 94, 0.2); border: 1px solid #f43f5e; box-shadow: inset 0 0 5px rgba(244,63,94,0.5); }
+        .w8 { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--accent-secondary); box-shadow: inset 0 0 5px rgba(139,92,246,0.5); }
+
+        @keyframes lightWindow {
+            0%, 10%, 90%, 100% { background: rgba(255, 255, 255, 0.05); box-shadow: none; }
+            40%, 60% { background: rgba(0, 240, 255, 0.4); box-shadow: 0 0 10px var(--accent-glow); }
+        }
+
+        .mobile-app {
+            position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+            width: 45px; height: 80px; border: 2px solid var(--text-muted);
+            border-radius: 8px; background: var(--bg-slate); display: flex;
+            flex-direction: column; align-items: center; padding: 5px; z-index: 3;
+            animation: floatApp 4s infinite ease-in-out; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .mobile-screen {
+            width: 100%; height: 100%; background: rgba(139, 92, 246, 0.1); border-radius: 4px;
+            position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 4px; padding: 4px;
+        }
+        .app-line { width: 100%; height: 2px; background: var(--accent-secondary); opacity: 0.5; border-radius: 2px; }
+        .app-line:nth-child(1) { width: 60%; background: var(--accent); }
+        
+        .mobile-screen::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(rgba(139, 92, 246, 0.4), transparent);
+            animation: scanScreen 3s infinite linear;
+        }
+
+        @keyframes scanScreen {
+            0% { transform: translateY(-50%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(50%); opacity: 0; }
+        }
+        @keyframes floatApp {
+            0%, 100% { transform: translateY(-50%) translateY(-5px); }
+            50% { transform: translateY(-50%) translateY(5px); }
+        }
+
+        .user-node {
+            position: absolute; left: 10%; top: 50%; transform: translateY(-50%);
+            width: 40px; height: 40px; background: rgba(0, 240, 255, 0.1);
+            border: 2px solid var(--accent); border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; z-index: 3; box-shadow: 0 0 15px var(--accent-glow);
+        }
+        .user-node i { color: var(--accent); font-size: 18px; }
+
+        .conn-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .conn-line { fill: none; stroke-width: 2; stroke-dasharray: 6; animation: streamData 20s linear infinite; }
+        .conn-admin { stroke: var(--accent-secondary); opacity: 0.6; }
+        .conn-sec { stroke: #f43f5e; opacity: 0.6; }
+        .conn-user { stroke: var(--accent); opacity: 0.6; }
+
+        @keyframes streamData { to { stroke-dashoffset: -1000; } }
+
+        .data-packet {
+            width: 8px; height: 8px; border-radius: 50%; position: absolute; z-index: 2;
+        }
+        .packet-1 { background: var(--accent-secondary); box-shadow: 0 0 12px var(--accent-secondary); animation: movePacket1 3s infinite ease-in-out; }
+        .packet-2 { background: #f43f5e; box-shadow: 0 0 12px #f43f5e; animation: movePacket2 2.5s infinite ease-in-out 1s; }
+        .packet-3 { background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: movePacket3 4s infinite ease-in-out 0.5s; }
+
+        @keyframes movePacket1 { 0% { right: 12%; top: 50%; opacity: 0; transform: scale(0.5); } 10% { opacity: 1; transform: scale(1); } 90% { opacity: 1; transform: scale(1); } 100% { right: 50%; top: 55%; opacity: 0; transform: scale(0.5); } }
+        @keyframes movePacket2 { 0% { left: 12%; top: 50%; opacity: 0; transform: scale(0.5); } 10% { opacity: 1; transform: scale(1); } 90% { opacity: 1; transform: scale(1); } 100% { left: 50%; top: 70%; opacity: 0; transform: scale(0.5); } }
+        @keyframes movePacket3 { 0% { left: 12%; top: 50%; opacity: 0; transform: scale(0.5); } 10% { opacity: 1; transform: scale(1); } 90% { opacity: 1; transform: scale(1); } 100% { left: 50%; top: 40%; opacity: 0; transform: scale(0.5); } }
+
+        .conn-label {
+            position: absolute; font-size: 9px; font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 1px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 4px; z-index: 3; font-weight: bold;
+        }
+        .label-admin { right: 25%; top: 35%; color: var(--accent-secondary); border: 1px solid rgba(139, 92, 246, 0.4); }
+        .label-sec { left: 25%; bottom: 25%; color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.4); }
+        .label-user-conn { left: 25%; top: 30%; color: var(--accent); border: 1px solid rgba(0, 240, 255, 0.4); }
     </style>
 </head>
+
 <body>
     <!-- Ambient Background Elements -->
     <div class="bg-grid"></div>
@@ -371,19 +1292,17 @@
 
     <div class="wrapper">
         <nav>
-            <a href="#" class="logo">
-                <div class="logo-img-container">
-                    <img src="logo_fvrlabs.png" alt="FVR LABS Logo">
-                </div>
-            </a>
-            <a href="mailto:franciscovira86@gmail.com" class="btn-contact"><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Hablemos del Proyecto</a>
+
+            <a href="mailto:franciscovira86@gmail.com" class="btn-contact"><i class="fa-solid fa-paper-plane"
+                    style="margin-right: 8px;"></i> Hablemos del Proyecto</a>
         </nav>
 
         <header class="hero">
             <div class="tagline reveal">Ingeniería, Datos & IA</div>
             <h1 class="reveal delay-1">Laboratorio de la <span>IA</span></h1>
             <p class="reveal delay-2">
-                Arquitectura de software y modelos predictivos de nivel corporativo. Transformamos datos en decisiones, automatizamos operaciones complejas y exploramos las fronteras de la IA creativa.
+                Arquitectura de software y modelos predictivos de nivel corporativo. Transformamos datos en decisiones,
+                automatizamos operaciones complejas y exploramos las fronteras de la IA creativa.
             </p>
             <div class="scroll-indicator reveal delay-3"><i class="fa-solid fa-chevron-down"></i></div>
         </header>
@@ -393,48 +1312,134 @@
             <section id="expertise">
                 <div class="section-header reveal">
                     <h2 class="section-title">Nuestras <span>Soluciones</span></h2>
-                    <p class="section-subtitle">Construimos productos digitales escalables desde la infraestructura en la nube hasta el dispositivo del usuario.</p>
+                    <p class="section-subtitle">Construimos productos digitales escalables desde la infraestructura en
+                        la nube hasta el dispositivo del usuario.</p>
                 </div>
                 <div class="grid-container">
                     <article class="card reveal delay-1">
                         <i class="fa-solid fa-database card-icon"></i>
                         <h3>Ingeniería de Datos</h3>
-                        <p>Diseñamos arquitecturas SQL eficientes, procesos de extracción (ETL) y modelamiento en <strong>Cubos OLAP</strong> para consolidar la información estratégica de su negocio.</p>
+                        <p>Diseñamos arquitecturas SQL eficientes, procesos de extracción (ETL) y modelamiento en
+                            <strong>Cubos OLAP</strong> para consolidar la información estratégica de su negocio.</p>
                     </article>
                     <article class="card reveal delay-2">
                         <i class="fa-solid fa-brain card-icon"></i>
                         <h3>IA Predictiva</h3>
-                        <p>Entrenamos e implementamos <strong>modelos neuronales</strong> adaptados a su empresa. Desde predicción de demanda, hasta automatización cognitiva de decisiones.</p>
+                        <p>Entrenamos e implementamos <strong>modelos neuronales</strong> adaptados a su empresa. Desde
+                            predicción de demanda, hasta automatización cognitiva de decisiones.</p>
                     </article>
                     <article class="card reveal delay-3">
                         <i class="fa-solid fa-server card-icon"></i>
                         <h3>SaaS & Desarrollo</h3>
-                        <p>Digitalizamos flujos de trabajo. Desarrollamos backends robustos en <strong>GCP</strong> y aplicaciones móviles con <strong>Flutter</strong> para alta concurrencia.</p>
+                        <p>Digitalizamos flujos de trabajo. Desarrollamos backends robustos en <strong>GCP</strong> y
+                            aplicaciones móviles con <strong>Flutter</strong> para alta concurrencia.</p>
                     </article>
                 </div>
             </section>
 
             <!-- Casos de Estudio -->
-            <section id="proyectos" style="background: rgba(11, 17, 32, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); box-shadow: inset 0 0 100px rgba(0,0,0,0.5);">
+            <section id="proyectos"
+                style="background: rgba(11, 17, 32, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); box-shadow: inset 0 0 100px rgba(0,0,0,0.5);">
                 <div class="section-header reveal">
                     <h2 class="section-title">Casos de <span>Estudio</span></h2>
-                    <p class="section-subtitle">Soluciones reales implementadas en entornos de alta exigencia operativa.</p>
+                    <p class="section-subtitle">Soluciones reales implementadas en entornos de alta exigencia operativa.
+                    </p>
                 </div>
                 <div class="grid-container">
                     <div class="project-card reveal delay-1">
                         <span class="project-status">En Desarrollo</span>
                         <h3 class="project-title">SaaS Gestión Condominios</h3>
-                        <p class="project-desc">Plataforma integral inteligente para la administración, transparencia financiera y comunicación en comunidades residenciales. Arquitectura multi-tenant escalable.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span> <span class="tag">Google Cloud</span> <span class="tag">Cloud SQL</span>
+                        <p class="project-desc">Plataforma integral inteligente para la administración, transparencia
+                            financiera y comunicación en comunidades residenciales. Arquitectura multi-tenant escalable.
+                        </p>
+
+                        <!-- ANIMACIÓN: SaaS Condominios -->
+                        <div class="building-container">
+                            <svg class="conn-svg" viewBox="0 0 400 180" preserveAspectRatio="none">
+                                <!-- App to Admin (Top Right to Center) -->
+                                <path class="conn-line conn-admin" d="M 360 90 C 280 90, 250 100, 200 100" />
+                                <!-- User to Security (Left to Center Bottom) -->
+                                <path class="conn-line conn-sec" d="M 40 90 C 120 90, 150 130, 200 130" />
+                                <!-- User to General Building (Left to Center Top) -->
+                                <path class="conn-line conn-user" d="M 40 90 C 120 90, 150 70, 200 70" />
+                            </svg>
+                            
+                            <div class="conn-label label-admin">ADMIN APP</div>
+                            <div class="conn-label label-sec">SEGURIDAD</div>
+                            <div class="conn-label label-user-conn">RESIDENTES</div>
+
+                            <div class="data-packet packet-1"></div>
+                            <div class="data-packet packet-2"></div>
+                            <div class="data-packet packet-3"></div>
+
+                            <div class="user-node">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <div class="building-wrapper">
+                                <div class="building">
+                                    <div class="window w1"></div>
+                                    <div class="window w2"></div>
+                                    <div class="window w3"></div>
+                                    <div class="window w4"></div>
+                                    <div class="window w5"></div>
+                                    <div class="window w6"></div>
+                                    <div class="window w7" title="Seguridad"></div>
+                                    <div class="window w8" title="Administración"></div>
+                                </div>
+                            </div>
+
+                            <div class="mobile-app">
+                                <div class="mobile-screen">
+                                    <div class="app-line"></div>
+                                    <div class="app-line"></div>
+                                    <div class="app-line"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-tags" style="margin-top: 15px;">
+                            <span class="tag">Flutter</span> <span class="tag">Google Cloud</span> <span
+                                class="tag">Cloud SQL</span>
                         </div>
                     </div>
                     <div class="project-card reveal delay-2">
                         <span class="project-status">Implementado</span>
                         <h3 class="project-title">IA Quiebres Stock Retail</h3>
-                        <p class="project-desc">Desarrollo de un modelo de red neuronal diseñado para detectar y predecir causas de quiebres de inventario en supermercados, alcanzando un <strong>98% de precisión</strong>.</p>
+                        <p class="project-desc">Desarrollo de un modelo de red neuronal diseñado para detectar y
+                            predecir causas de quiebres de inventario en supermercados, alcanzando un <strong>98% de
+                                precisión</strong>.</p>
+
+                        <!-- ANIMACIÓN: Red Neuronal Quiebres de Stock -->
+                        <div class="nn-container">
+                            <svg class="nn-lines" width="100%" height="100%">
+                                <line x1="10%" y1="20%" x2="50%" y2="50%" class="nn-line active" />
+                                <line x1="10%" y1="50%" x2="50%" y2="50%" class="nn-line" />
+                                <line x1="10%" y1="80%" x2="50%" y2="50%" class="nn-line active" />
+                                <line x1="50%" y1="50%" x2="90%" y2="50%" class="nn-line active" />
+                            </svg>
+                            <div class="nn-layer layer-1">
+                                <div class="nn-node active"></div>
+                                <div class="nn-node"></div>
+                                <div class="nn-node active"></div>
+                            </div>
+                            <div class="nn-layer layer-2">
+                                <div class="nn-node active"></div>
+                            </div>
+                            <div class="nn-layer layer-3">
+                                <div class="nn-node"></div>
+                            </div>
+                        </div>
+                        <div class="stock-status-container">
+                            <div class="status-alert"><i class="fa-solid fa-triangle-exclamation"></i> Riesgo de Quiebre
+                                (Stock Crítico)</div>
+                            <div class="status-ok"><i class="fa-solid fa-check-circle"></i> Stock Optimizado
+                                Automáticamente</div>
+                        </div>
+
                         <div class="project-tags">
-                            <span class="tag">Python</span> <span class="tag">Machine Learning</span> <span class="tag">Data Warehouse</span>
+                            <span class="tag">Python</span> <span class="tag">Machine Learning</span> <span
+                                class="tag">Data Warehouse</span>
                         </div>
                     </div>
                 </div>
@@ -444,92 +1449,165 @@
             <section id="conocimientos">
                 <div class="section-header reveal">
                     <h2 class="section-title">Base de <span>Conocimientos</span></h2>
-                    <p class="section-subtitle">Nuestra experiencia corporativa consolidada en innovación, eficiencia operativa y metodologías estratégicas.</p>
+                    <p class="section-subtitle">Nuestra experiencia corporativa consolidada en innovación, eficiencia
+                        operativa y metodologías estratégicas.</p>
                 </div>
                 <div class="grid-container">
                     <article class="card reveal delay-1">
                         <i class="fa-solid fa-chart-line card-icon"></i>
                         <h3>Business Intelligence</h3>
-                        <p>Transformamos datos complejos en conocimiento accionable. Dominio en <strong>Power BI</strong>, modelamiento de datos y desarrollo de indicadores (KPIs) estratégicos para toma de decisiones.</p>
+                        <p>Transformamos datos complejos en conocimiento accionable. Dominio en <strong>Power
+                                BI</strong>, modelamiento de datos y desarrollo de indicadores (KPIs).</p>
+                        <!-- ANIMACIÓN: Gráfico de Barras -->
+                        <div class="chart-container">
+                            <div class="bar bar-1"></div>
+                            <div class="bar bar-2"></div>
+                            <div class="bar bar-3"></div>
+                            <div class="bar bar-4"></div>
+                            <div class="bar bar-5"></div>
+                        </div>
                     </article>
                     <article class="card reveal delay-2">
                         <i class="fa-solid fa-truck-fast card-icon"></i>
                         <h3>Logística & Forecasting</h3>
-                        <p>Amplia experiencia en planificación logística, proyecciones de demanda y costeo (ABC Costing). Enfocados en la eficiencia operativa en entornos dinámicos de alta exigencia.</p>
+                        <p>Amplia experiencia en planificación logística, proyecciones de demanda y costeo (ABC
+                            Costing). Enfocados en la eficiencia operativa en entornos dinámicos de alta exigencia.</p>
+                        <!-- ANIMACIÓN: Logística -->
+                        <div class="logistics-anim">
+                            <svg class="forecast-line" viewBox="0 0 200 40" preserveAspectRatio="none">
+                                <path class="forecast-path" d="M 0 35 L 40 20 L 80 25 L 120 10 L 160 15 L 200 5" />
+                            </svg>
+                            <div class="belt-box"><i class="fa-solid fa-box"></i></div>
+                            <div class="belt-box box-2"><i class="fa-solid fa-box-open"></i></div>
+                        </div>
                     </article>
                     <article class="card reveal delay-3">
                         <i class="fa-solid fa-lightbulb card-icon"></i>
                         <h3>Design Thinking & Agile</h3>
-                        <p>Implementación de metodologías ágiles y técnicas de <strong>Design Thinking</strong> para fomentar un entorno colaborativo, donde la innovación y la adaptación rápida son prioridades.</p>
+                        <p>Implementación de metodologías ágiles y técnicas de <strong>Design Thinking</strong> para
+                            fomentar un entorno colaborativo, donde la innovación y la adaptación rápida son
+                            prioridades.</p>
+                        <!-- ANIMACIÓN: Agile -->
+                        <div class="agile-anim">
+                            <div class="agile-cycle">
+                                <div class="agile-dot"></div>
+                            </div>
+                            <i class="fa-solid fa-lightbulb agile-bulb"></i>
+                        </div>
                     </article>
                     <article class="card reveal delay-1">
                         <i class="fa-solid fa-gears card-icon"></i>
                         <h3>Automatización</h3>
-                        <p>Diseño de soluciones e integración de herramientas avanzadas como <strong>SQL Server</strong> y <strong>Python</strong> para automatizar procesos, reducir costos e impulsar la eficiencia.</p>
+                        <p>Diseño de soluciones e integración de herramientas avanzadas como <strong>SQL Server</strong>
+                            y <strong>Python</strong> para automatizar procesos, reducir costos e impulsar la
+                            eficiencia.</p>
+                        <!-- ANIMACIÓN: Robot -->
+                        <div class="auto-anim">
+                            <i class="fa-solid fa-gear gear-icon"></i>
+                            <div class="robot-head">
+                                <div class="robot-antenna"></div>
+                                <div class="robot-eye"></div>
+                            </div>
+                            <i class="fa-solid fa-gear gear-icon gear-rev"></i>
+                        </div>
                     </article>
                 </div>
             </section>
+
             <!-- Cubos OLAP y Modelo Relacional -->
-            <section id="olap" style="background: rgba(11, 17, 32, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); box-shadow: inset 0 0 100px rgba(0,0,0,0.5);">
+            <section id="olap"
+                style="background: rgba(11, 17, 32, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); box-shadow: inset 0 0 100px rgba(0,0,0,0.5);">
                 <div class="section-header reveal">
                     <h2 class="section-title">Modelamiento y <span>Cubos OLAP</span></h2>
-                    <p class="section-subtitle">Arquitectura de datos multidimensional para toma de decisiones estratégicas.</p>
+                    <p class="section-subtitle">Arquitectura de datos multidimensional para toma de decisiones
+                        estratégicas.</p>
                 </div>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto;">
+
+                <div
+                    style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto;">
                     <!-- Representación Visual -->
-                    <div class="reveal delay-1" style="flex: 1 1 400px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent-secondary); filter: blur(60px); opacity: 0.3; border-radius: 50%;"></div>
-                        <div style="position: absolute; bottom: -50px; left: -50px; width: 150px; height: 150px; background: var(--accent); filter: blur(60px); opacity: 0.2; border-radius: 50%;"></div>
-                        
-                        <div style="display: flex; justify-content: center; align-items: center; height: 260px; position: relative;">
-                            <!-- Central Cube -->
-                            <div style="width: 90px; height: 90px; background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 0 40px var(--accent-glow);">
-                                <i class="fa-solid fa-cube" style="font-size: 45px; color: var(--bg-base);"></i>
+                    <div class="reveal delay-1"
+                        style="flex: 1 1 400px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 40px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow: hidden; height: 380px;">
+                        <div
+                            style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent-secondary); filter: blur(60px); opacity: 0.3; border-radius: 50%;">
+                        </div>
+                        <div
+                            style="position: absolute; bottom: -50px; left: -50px; width: 150px; height: 150px; background: var(--accent); filter: blur(60px); opacity: 0.2; border-radius: 50%;">
+                        </div>
+
+                        <div
+                            style="display: flex; justify-content: center; align-items: center; height: 100%; position: relative;">
+
+                            <!-- ANIMACIÓN: Cubo OLAP 3D -->
+                            <div class="cube-container">
+                                <div class="cube-stats stat-1">ROI +35%</div>
+                                <div class="cube-stats stat-2">Query &lt;10ms</div>
+                                <div class="cube-stats stat-3">Acc 99.9%</div>
+                                <div class="cube">
+                                    <div class="cube-face face-front">
+                                        <i class="fa-solid fa-chart-line"></i> Ventas <span>+24%</span>
+                                    </div>
+                                    <div class="cube-face face-back">
+                                        <i class="fa-solid fa-boxes-stacked"></i> Stock <span>98%</span>
+                                    </div>
+                                    <div class="cube-face face-right">
+                                        <i class="fa-solid fa-location-dot"></i> Región <span>Norte</span>
+                                    </div>
+                                    <div class="cube-face face-left">
+                                        <i class="fa-solid fa-sack-dollar"></i> Costo <span>-12%</span>
+                                    </div>
+                                    <div class="cube-face face-top">
+                                        <i class="fa-solid fa-calendar-days"></i> Tiempo <span>Q3</span>
+                                    </div>
+                                    <div class="cube-face face-bottom">
+                                        <i class="fa-solid fa-database"></i> OLAP Data
+                                    </div>
+                                </div>
                             </div>
-                            
+
                             <!-- Dimensions Nodes -->
-                            <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 2; background: rgba(3,7,18,0.8); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--glass-border);">
-                                <i class="fa-solid fa-database" style="color: var(--accent); font-size: 18px; margin-bottom: 5px;"></i>
-                                <div style="font-size: 12px; color: var(--text-main); font-weight: 600;">Hechos</div>
+                            <div
+                                style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 2; background: rgba(3,7,18,0.8); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                                <div style="font-size: 12px; color: var(--text-main); font-weight: 600;"><i
+                                        class="fa-solid fa-database" style="color: var(--accent);"></i> Extracción ETL
+                                </div>
                             </div>
-                            <div style="position: absolute; bottom: 20px; left: 20px; text-align: center; z-index: 2; background: rgba(3,7,18,0.8); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--glass-border);">
-                                <i class="fa-solid fa-clock" style="color: var(--accent-secondary); font-size: 18px; margin-bottom: 5px;"></i>
-                                <div style="font-size: 12px; color: var(--text-main); font-weight: 600;">Tiempo</div>
-                            </div>
-                            <div style="position: absolute; bottom: 20px; right: 20px; text-align: center; z-index: 2; background: rgba(3,7,18,0.8); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--glass-border);">
-                                <i class="fa-solid fa-location-dot" style="color: var(--accent); font-size: 18px; margin-bottom: 5px;"></i>
-                                <div style="font-size: 12px; color: var(--text-main); font-weight: 600;">Geografía</div>
-                            </div>
-                            
-                            <!-- Connecting Lines -->
-                            <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-                                <line x1="50%" y1="15%" x2="50%" y2="50%" stroke="rgba(0, 240, 255, 0.4)" stroke-width="2" stroke-dasharray="6,4" />
-                                <line x1="25%" y1="80%" x2="50%" y2="50%" stroke="rgba(139, 92, 246, 0.4)" stroke-width="2" stroke-dasharray="6,4" />
-                                <line x1="75%" y1="80%" x2="50%" y2="50%" stroke="rgba(0, 240, 255, 0.4)" stroke-width="2" stroke-dasharray="6,4" />
-                            </svg>
                         </div>
                     </div>
-                    
+
                     <!-- Explicación -->
                     <div class="reveal delay-2" style="flex: 1 1 400px;">
-                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 20px; color: var(--text-main);">Toma de <span style="color: var(--accent);">Decisiones Estratégicas</span></h3>
+                        <h3
+                            style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 20px; color: var(--text-main);">
+                            Toma de <span style="color: var(--accent);">Decisiones Estratégicas</span></h3>
                         <p style="color: var(--text-muted); font-size: 18px; margin-bottom: 25px; line-height: 1.7;">
-                            Integramos múltiples fuentes de datos en un <strong>Modelo Relacional (Data Warehouse)</strong> robusto y optimizado, que alimenta nuestros <strong>Cubos OLAP</strong> de alto rendimiento.
+                            Integramos múltiples fuentes de datos en un <strong>Modelo Relacional (Data
+                                Warehouse)</strong> robusto y optimizado, que alimenta nuestros <strong>Cubos OLAP
+                                multidimensionales</strong>.
                         </p>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                                <i class="fa-solid fa-bolt" style="color: var(--accent); font-size: 20px; margin-top: 2px;"></i>
+                            <li
+                                style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                                <i class="fa-solid fa-bolt"
+                                    style="color: var(--accent); font-size: 20px; margin-top: 2px;"></i>
                                 <div>
-                                    <strong style="color: var(--text-main); font-size: 16px; display: block; margin-bottom: 5px;">Análisis Multidimensional</strong>
-                                    <span style="color: var(--text-muted); font-size: 15px;">Evaluación de métricas desde infinitas perspectivas (cross-drilling) en milisegundos.</span>
+                                    <strong
+                                        style="color: var(--text-main); font-size: 16px; display: block; margin-bottom: 5px;">Análisis
+                                        Multidimensional</strong>
+                                    <span style="color: var(--text-muted); font-size: 15px;">Evaluación de métricas
+                                        desde infinitas perspectivas (cross-drilling) en milisegundos.</span>
                                 </div>
                             </li>
-                            <li style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                                <i class="fa-solid fa-bullseye" style="color: var(--accent-secondary); font-size: 20px; margin-top: 2px;"></i>
+                            <li
+                                style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                                <i class="fa-solid fa-bullseye"
+                                    style="color: var(--accent-secondary); font-size: 20px; margin-top: 2px;"></i>
                                 <div>
-                                    <strong style="color: var(--text-main); font-size: 16px; display: block; margin-bottom: 5px;">Visión 360° Confiable</strong>
-                                    <span style="color: var(--text-muted); font-size: 15px;">Consolidación de datos dispersos en una única fuente de la verdad para la gerencia.</span>
+                                    <strong
+                                        style="color: var(--text-main); font-size: 16px; display: block; margin-bottom: 5px;">Visión
+                                        360° Confiable</strong>
+                                    <span style="color: var(--text-muted); font-size: 15px;">Consolidación de datos
+                                        dispersos en una única fuente de la verdad para la gerencia.</span>
                                 </div>
                             </li>
                         </ul>
@@ -586,10 +1664,14 @@
             <section id="contacto" class="cta-banner reveal delay-1">
                 <div class="cta-content">
                     <h2>Impulsando la <span>Innovación</span></h2>
-                    <p>¿Listo para optimizar la gestión de datos y la toma de decisiones en su organización? Conversemos sobre cómo podemos aportar valor a su negocio mediante tecnología y estrategia.</p>
+                    <p>¿Listo para optimizar la gestión de datos y la toma de decisiones en su organización? Conversemos
+                        sobre cómo podemos aportar valor a su negocio mediante tecnología y estrategia.</p>
                     <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="mailto:franciscovira86@gmail.com" class="btn-primary"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> Iniciar Conversación</a>
-                        <a href="https://www.linkedin.com/in/francisco-vira-rodriguez-19731343" target="_blank" class="btn-secondary"><i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i> Conectar en LinkedIn</a>
+                        <a href="mailto:franciscovira86@gmail.com" class="btn-primary"><i class="fa-solid fa-envelope"
+                                style="margin-right: 8px;"></i> Iniciar Conversación</a>
+                        <a href="https://www.linkedin.com/in/francisco-vira-rodriguez-19731343" target="_blank"
+                            class="btn-secondary"><i class="fa-brands fa-linkedin" style="margin-right: 8px;"></i>
+                            Conectar en LinkedIn</a>
                     </div>
                 </div>
                 <div class="contact-card">
@@ -601,7 +1683,8 @@
                         </li>
                         <li>
                             <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
-                            <a href="https://www.linkedin.com/in/francisco-vira-rodriguez-19731343" target="_blank">Francisco Vira Rodriguez</a>
+                            <a href="https://www.linkedin.com/in/francisco-vira-rodriguez-19731343"
+                                target="_blank">Francisco Vira Rodriguez</a>
                         </li>
                     </ul>
                 </div>
@@ -625,9 +1708,9 @@
 
         const reveals = document.querySelectorAll('.reveal');
         const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        const revealOnScroll = new IntersectionObserver(function (entries, observer) {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                     observer.unobserve(entry.target);
                 }
@@ -643,4 +1726,5 @@
         };
     </script>
 </body>
+
 </html>
